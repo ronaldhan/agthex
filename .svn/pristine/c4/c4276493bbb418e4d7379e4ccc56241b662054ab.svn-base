@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace agthex
+{
+    public class Heap<T>
+    {
+        IComparer<T> comparer;
+        T[] heap;
+        private int count;
+        private int branches;
+        public int Count { get { return count; } set { count = value; } }
+        //默认构造二叉堆
+        public Heap():this(2,16,null) { }
+        //分支数大于8则赋值为8
+        public Heap(int branchNum) : this(branchNum, 16, null) { }
+        //有比较方法的构造方式
+        public Heap(IComparer<T> comparer) : this(branches,16, comparer) { }
+
+        public Heap(int branch, int capacity, IComparer<T> comparer)
+        {
+            this.branches = branch > 8 ? 8 : branch;
+            this.comparer = (comparer == null) ? Comparer<T>.Default : comparer;
+            this.heap = new T[capacity];
+        }
+
+
+
+    }
+}

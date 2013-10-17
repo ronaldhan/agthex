@@ -1,0 +1,15 @@
+E:\VS2005\project\agthex\agthex\bin\Debug\agthex.exe
+E:\VS2005\project\agthex\agthex\bin\Debug\agthex.pdb
+E:\VS2005\project\agthex\agthex\obj\Debug\ResolveAssemblyReference.cache
+E:\VS2005\project\agthex\agthex\obj\Debug\agthex.exe
+E:\VS2005\project\agthex\agthex\obj\Debug\agthex.pdb
+E:\VS2005\project\agthex\agthex\bin\Release\agthex.exe
+E:\VS2005\project\agthex\agthex\bin\Release\agthex.pdb
+E:\VS2005\project\agthex\agthex\obj\Release\ResolveAssemblyReference.cache
+E:\VS2005\project\agthex\agthex\obj\Release\agthex.exe
+E:\VS2005\project\agthex\agthex\obj\Release\agthex.pdb
+D:\VS05Project\project\agthex\agthex\obj\Release\agthex.exe
+D:\VS05Project\project\agthex\agthex\obj\Release\agthex.pdb
+D:\VS05Project\project\agthex\agthex\bin\Release\agthex.exe
+D:\VS05Project\project\agthex\agthex\bin\Release\agthex.pdb
+D:\VS05Project\project\agthex\agthex\obj\Release\ResolveAssemblyReference.cache

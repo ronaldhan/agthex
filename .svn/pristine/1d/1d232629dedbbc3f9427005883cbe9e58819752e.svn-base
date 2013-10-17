@@ -1,0 +1,132 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace agthex
+{
+    public class Heap<T>
+    {
+        IComparer<T> comparer;
+        T[] heap;
+        private int count;
+        private int branches;
+        public int Count { get { return count; } set { count = value; } }
+        //默认构造二叉堆
+        public Heap():this(2,16,null) { }
+        //分支数大于8则赋值为8
+        public Heap(int branchNum) : this(branchNum, 16, null) { }
+        //有比较方法的构造方式
+        public Heap(IComparer<T> comparer) : this(branches,16, comparer) { }
+
+        public Heap(int branch, int capacity, IComparer<T> comparer)
+        {
+            this.branches = branch > 8 ? 8 : branch;
+            this.comparer = (comparer == null) ? Comparer<T>.Default : comparer;
+            this.heap = new T[capacity];
+            this.count = heap.Length;
+        }
+
+        /// <summary>
+        /// 索引为i的元素下移，维护堆的性质
+        /// </summary>
+        /// <param name="i">索引值</param>
+        void SiftDown(int length,int i)
+        {
+            int j, k, l;
+            T tmp;
+            while (true)
+            {
+                //结点i的左边第一个孩子结点索引
+                j = i * branches + 1;
+                //结点i的右边最后一个结点索引
+                k = (i + 1) * branches;
+
+                //结点是否是最后一个
+                if (j >= length)
+                {
+                    break;
+                }
+
+                //找到结点中最大的一个
+                for (l = j + 1; l < length && l <= k; l++)
+                {
+                    if (heap[l] > heap[i])
+                    {
+                        j = l;
+                    }
+                }
+
+                //如果最大的结点大于父结点，则交换
+                if (heap[j] > heap[i])
+                {
+                    tmp = heap[i];
+                    heap[i] = heap[j];
+                    heap[j] = tmp;
+                    i = j;
+                }
+                else
+                {
+                    break;
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// 调整堆的所有非叶子结点，维护堆的性质
+        /// </summary>
+        void Heapify(int length)
+        {
+            int i;
+            for (i = count / branches - 1; i >= 0;i-- )
+            {
+                SiftDown(length,i);
+            }
+        }
+
+        public void Sort(int length)
+        {
+            Heapify(length);
+            int i;
+            T t;
+            for (i = length - 1; i >= 0;i-- )
+            {
+                t = heap[0];
+                heap[0] = heap[i];
+                heap[i] = t;
+                SiftDown(i, 0);
+            }
+        }
+
+        void SiftUp(int i)
+        {
+            T v = heap[i];
+            for (int n2 = Math.Floor((i-1)/branches); i > 0 && comparer.Compare(v, heap[n2]) > 0; i = n2, n2 = Math.Floor((i-1)/branches))heap[i] = heap[n2];
+            heap[i]=v;
+        }
+
+        public void Push(T v)
+        {
+            if (count >= heap.Length) Array.Resize(ref heap, count * 2);
+            heap[count] = v;
+            count += 1;
+            SiftUp(count--);
+        }
+
+        public T Pop()
+        {
+            T v = Top();
+            heap[0] = heap[--count];
+            if (count > 0) SiftDown(count,0);
+            return v;
+        }
+
+        public T Top()
+        {
+            if (count > 0) return heap[0];
+            throw new InvalidOperationException("堆为空");
+        }
+
+    }
+}

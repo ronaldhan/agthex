@@ -1,0 +1,7 @@
+D:\VS08Project\agthex\agthex\obj\Release\agthex.exe
+D:\VS08Project\agthex\agthex\obj\Release\agthex.pdb
+D:\VS08Project\agthex\agthex\bin\Release\agthex.exe
+D:\VS08Project\agthex\agthex\bin\Release\agthex.pdb
+D:\VS08Project\agthex\agthex\obj\Release\ResolveAssemblyReference.cache
+C:\git_repository\agthex\agthex\obj\Release\agthex.exe
+C:\git_repository\agthex\agthex\obj\Release\agthex.pdb
